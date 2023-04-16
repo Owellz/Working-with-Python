@@ -258,7 +258,8 @@ speed = myfunc(10)
 print(speed)
 
 
-# Using SCALE to predict futer of CO2 
+
+# Using SCALER to predict Predict of CO2 emission from a 1.3 liter car that weighs 2300 kilograms:
 
 import pandas
 from sklearn import linear_model
