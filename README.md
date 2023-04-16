@@ -15,6 +15,31 @@ while True:
     dice_result = roll_dice()
     print("you are a", dice_result)
 
+## Moving all images from download folder into a new folder called New
+
+import os
+import shutil
+
+# set the path to the Downloads folder on your Mac
+downloads_path = os.path.expanduser("~/Downloads")
+
+# set the path to the new folder on your desktop
+new_folder_path = os.path.expanduser("~/Desktop/new")
+
+# create the new folder if it doesn't already exist
+if not os.path.exists(new_folder_path):
+    os.mkdir(new_folder_path)
+
+# loop through all the files in the Downloads folder
+for filename in os.listdir(downloads_path):
+    # check if the file is an image (JPG, PNG, GIF)
+    if filename.endswith(('.jpg', '.jpeg', '.png', '.gif')):
+        # set the path to the file in the Downloads folder
+        file_path = os.path.join(downloads_path, filename)
+        # set the path to the file in the new folder
+        new_file_path = os.path.join(new_folder_path, filename)
+        # move the file to the new folder
+        shutil.move(file_path, new_file_path)
 
 ## Defining function and calling a function using 
 If, elif and else functions; 
