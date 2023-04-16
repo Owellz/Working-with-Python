@@ -176,3 +176,106 @@ high_new_cases = covid_df[covid_df.new_cases >1000]
 
 ## sorting 
 covid_df.sort_values('new_deaths', ascending=False).head(10)
+
+
+## What is the age that 90% of the people are younger than?
+#using percentile
+
+import numpy
+
+ages = [5,31,43,48,50,41,7,11,15,39,80,82,32,2,8,6,25,36,27,61,31]
+
+x = numpy.percentile(ages, 90)
+
+print(x)
+
+## Create an array with 100000 random numbers, and display them using a histogram with 100 bars: 
+
+import numpy
+import matplotlib.pyplot as plt
+
+x = numpy.random.uniform(0.0, 5.0, 250)
+
+plt.hist(x, 5)
+plt.show()
+
+## A typical normal data distribution: using random.normal method
+
+import numpy
+import matplotlib.pyplot as plt
+
+x = numpy.random.normal(5.0, 1.0, 100000)
+
+plt.hist(x, 100)
+plt.show()
+
+## Use the scatter() method to draw a scatter plot diagram:
+## What we can read from the diagram is that the two fastest cars 
+## were both 2 years old, and the slowest car was 12 years old.
+
+import matplotlib.pyplot as plt
+
+x = [5,7,8,7,2,17,2,9,4,11,12,9,6]
+y = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+
+plt.scatter(x, y)
+plt.show()
+
+
+# Using two values to determine the Relationship (r) between them
+#-1, 1 means their is relationship while 
+# 0 meansno relationship
+
+from scipy import stats
+
+x = [5,7,8,7,2,17,2,9,4,11,12,9,6]
+y = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+
+slope, intercept, r, p, std_err = stats.linregress(x, y)
+
+print(r)
+
+## Execute a method that returns some important key values of Linear Regression:
+
+slope, intercept, r, p, std_err = stats.linregress(x, y)
+
+
+
+## To Predict the speed of a 10 years old car:
+
+from scipy import stats
+
+x = [5,7,8,7,2,17,2,9,4,11,12,9,6]
+y = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+
+slope, intercept, r, p, std_err = stats.linregress(x, y)
+
+def myfunc(x):
+  return slope * x + intercept
+
+speed = myfunc(10)
+
+print(speed)
+
+
+# Using SCALE to predict futer of CO2 
+
+import pandas
+from sklearn import linear_model
+from sklearn.preprocessing import StandardScaler
+scale = StandardScaler()
+
+df = pandas.read_csv("data.csv")
+
+X = df[['Weight', 'Volume']]
+y = df['CO2']
+
+scaledX = scale.fit_transform(X)
+
+regr = linear_model.LinearRegression()
+regr.fit(scaledX, y)
+
+scaled = scale.transform([[2300, 1.3]])
+
+predictedCO2 = regr.predict([scaled[0]])
+print(predictedCO2)
