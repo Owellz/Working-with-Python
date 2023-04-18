@@ -114,14 +114,16 @@ else:
 
 ## kg and lbs
 
-weight = int(input("weight: "))
-    unit = input('(K)g or (K)bps: ')
-    if unit.upper() == "K":
-        converted = weight/0.45
-        print('weight in Lbs: + str(converted'))
-    else:
-        converted = weight * 0.45
-        print('weight in Kgs: ' + str(converted))
+weight = int(input("Weight: "))
+unit = input("(K)g or (L)bs: l ")
+
+if unit.upper() == "K":
+    converted = weight / 0.45
+    print("Weight in Lbs: " + str(converted))
+else:
+    converted = weight * 0.45
+    print("Weight in Kgs: " + str(converted))
+
 
 ## the imports file to start pandas tutorial 
 
